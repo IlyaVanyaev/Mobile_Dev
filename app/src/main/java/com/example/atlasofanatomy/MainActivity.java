@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    private final String TAG = this.getClass().getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         CharSequence text = "onCreate worked";
         int duration = Toast.LENGTH_SHORT;
         Toast.makeText(context, text, duration).show();
+
+        Log.i(TAG, "onCreate info log");
     }
 
     @Override
@@ -27,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
         CharSequence text = "onStart worked";
         int duration = Toast.LENGTH_SHORT;
         Toast.makeText(context, text, duration).show();
+
+        Log.i(TAG, "onStart info log");
+        Log.e(TAG, "onStart error log");
     }
 
     @Override
@@ -37,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
         CharSequence text = "onStop worked";
         int duration = Toast.LENGTH_SHORT;
         Toast.makeText(context, text, duration).show();
+
+        Log.i(TAG, "onStop info log");
+        Log.w(TAG, "onStop warning log");
+        Log.d(TAG, "onStop debug log");
     }
 
     @Override
@@ -47,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         CharSequence text = "onDestroy worked";
         int duration = Toast.LENGTH_SHORT;
         Toast.makeText(context, text, duration).show();
+
+        Log.i(TAG, "onDestroy info log");
     }
 
     @Override
@@ -57,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
         CharSequence text = "onPause worked";
         int duration = Toast.LENGTH_SHORT;
         Toast.makeText(context, text, duration).show();
+
+        Log.i(TAG, "onPause info log");
+        Log.v(TAG, "onPause verbose log");
     }
 
     @Override
@@ -67,5 +84,7 @@ public class MainActivity extends AppCompatActivity {
         CharSequence text = "onResume worked";
         int duration = Toast.LENGTH_SHORT;
         Toast.makeText(context, text, duration).show();
+
+        Log.i(TAG, "onResume info log");
     }
 }
