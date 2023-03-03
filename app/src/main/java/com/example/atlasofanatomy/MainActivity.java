@@ -33,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         Toast.makeText(context, text, duration).show();
 
-        Log.i(TAG, "onStart info log");
-        Log.e(TAG, "onStart error log");
+        Log.d(TAG, "onStart debug log");
     }
 
     @Override
@@ -46,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         Toast.makeText(context, text, duration).show();
 
-        Log.i(TAG, "onStop info log");
-        Log.w(TAG, "onStop warning log");
         Log.d(TAG, "onStop debug log");
     }
 
@@ -72,8 +69,7 @@ public class MainActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         Toast.makeText(context, text, duration).show();
 
-        Log.i(TAG, "onPause info log");
-        Log.v(TAG, "onPause verbose log");
+        Log.d(TAG, "onPause debug log");
     }
 
     @Override
@@ -85,6 +81,6 @@ public class MainActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         Toast.makeText(context, text, duration).show();
 
-        Log.i(TAG, "onResume info log");
+        Log.d(TAG, "onResume debug log");
     }
 }
