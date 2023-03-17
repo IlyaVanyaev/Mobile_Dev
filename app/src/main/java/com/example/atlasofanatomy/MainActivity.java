@@ -3,6 +3,7 @@ package com.example.atlasofanatomy;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,6 +34,14 @@ public class MainActivity extends AppCompatActivity {
         Button b = (Button) findViewById(R.id.main_sign_in_button);
         b.setText(R.string.sign);
 
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "button push");
+            }
+        });
+
+
         ImageView iv1 = (ImageView) findViewById(R.id.main_image);
         iv1.setImageResource(R.drawable.scale_1200);
 
@@ -41,12 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView iv3 = (ImageView) findViewById(R.id.main_png);
         iv3.setImageResource(R.drawable.pngegg);
-    }
-
-
-
-    public void buttonClick (View v){
-        Log.d(TAG,"button is clicked");
     }
 
 
