@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -42,63 +43,11 @@ public class MainActivity extends AppCompatActivity {
         iv3.setImageResource(R.drawable.pngegg);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
 
-        Context context = getApplicationContext();
-        CharSequence text = "onStart worked";
-        int duration = Toast.LENGTH_SHORT;
-        Toast.makeText(context, text, duration).show();
 
-        Log.d(TAG, "onStart debug log");
+    public void buttonClick (View v){
+        Log.d(TAG,"button is clicked");
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
 
-        Context context = getApplicationContext();
-        CharSequence text = "onStop worked";
-        int duration = Toast.LENGTH_SHORT;
-        Toast.makeText(context, text, duration).show();
-
-        Log.d(TAG, "onStop debug log");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        Context context = getApplicationContext();
-        CharSequence text = "onDestroy worked";
-        int duration = Toast.LENGTH_SHORT;
-        Toast.makeText(context, text, duration).show();
-
-        Log.i(TAG, "onDestroy info log");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        Context context = getApplicationContext();
-        CharSequence text = "onPause worked";
-        int duration = Toast.LENGTH_SHORT;
-        Toast.makeText(context, text, duration).show();
-
-        Log.d(TAG, "onPause debug log");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        Context context = getApplicationContext();
-        CharSequence text = "onResume worked";
-        int duration = Toast.LENGTH_SHORT;
-        Toast.makeText(context, text, duration).show();
-
-        Log.d(TAG, "onResume debug log");
-    }
 }
