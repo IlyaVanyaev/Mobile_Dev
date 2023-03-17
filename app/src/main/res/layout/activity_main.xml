@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:hint="@string/type_name"
+
         android:minHeight="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
         android:id="@+id/main_sign_in_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sign"
+
         android:layout_marginLeft="70dp"
         android:layout_marginRight="70dp"
         android:layout_marginBottom="-60dp"
@@ -46,13 +46,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/anatomy"
+
         android:layout_marginTop="170dp"
         />
 
     <ImageView
         android:id="@+id/main_image"
-        android:src="@drawable/scale_1200"
+
         android:layout_width="@dimen/image_width"
         android:layout_height="@dimen/image_height"
         app:layout_constraintTop_toTopOf="parent"
@@ -66,7 +66,7 @@
         android:id="@+id/main_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/welcome"
+
         app:layout_constraintTop_toTopOf="@id/main_string"
         app:layout_constraintBottom_toTopOf="@id/main_type_name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +78,7 @@
         android:id="@+id/second_main_image"
         android:layout_width="@dimen/image_width"
         android:layout_height="@dimen/image_height"
-        android:src="@drawable/mus_anat"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/main_image"
         app:layout_constraintBottom_toTopOf="@id/main_string"
@@ -87,9 +87,10 @@
         />
 
     <ImageView
+        android:id="@+id/main_png"
         android:layout_width="@dimen/image_width"
         android:layout_height="70dp"
-        android:src="@drawable/pngegg"
+
         app:layout_constraintBottom_toTopOf="@id/main_sign_in_button"
         app:layout_constraintTop_toTopOf="@id/main_type_name"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,6 +99,7 @@
         />
 
     <ImageView
+        android:id="@+id/main_svg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/muscle"
@@ -105,8 +107,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="750dp"
-        android:layout_marginLeft="350dp"
+        android:layout_marginTop="650dp"
+        android:layout_marginStart="330dp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

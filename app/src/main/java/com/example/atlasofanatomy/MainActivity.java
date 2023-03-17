@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,12 +20,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Context context = getApplicationContext();
-        CharSequence text = "onCreate worked";
-        int duration = Toast.LENGTH_SHORT;
-        Toast.makeText(context, text, duration).show();
+        TextView tv1 = (TextView) findViewById(R.id.main_string);
+        tv1.setText(R.string.anatomy);
 
-        Log.i(TAG, "onCreate info log");
+        TextView tv2 = (TextView) findViewById(R.id.main_welcome);
+        tv2.setText(R.string.welcome);
+
+        EditText et = (EditText) findViewById(R.id.main_type_name);
+        et.setHint(R.string.type_name);
+
+        Button b = (Button) findViewById(R.id.main_sign_in_button);
+        b.setText(R.string.sign);
+
+        ImageView iv1 = (ImageView) findViewById(R.id.main_image);
+        iv1.setImageResource(R.drawable.scale_1200);
+
+        ImageView iv2 = (ImageView) findViewById(R.id.second_main_image);
+        iv2.setImageResource(R.drawable.mus_anat);
+
+        ImageView iv3 = (ImageView) findViewById(R.id.main_png);
+        iv3.setImageResource(R.drawable.pngegg);
     }
 
     @Override
