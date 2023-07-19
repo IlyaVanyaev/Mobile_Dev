@@ -1,7 +1,13 @@
 package com.example.atlasofanatomy;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.nfc.Tag;
@@ -17,6 +23,8 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private final String TAG = this.getClass().getSimpleName();
+
+    TextView lastLog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
                 intent.putExtra("NAME", et.getText().toString());
-                startActivity(intent);
+                result.launch(intent);
             }
         });
 
@@ -55,7 +63,23 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView iv3 = (ImageView) findViewById(R.id.main_png);
         iv3.setImageResource(R.drawable.pngegg);
+
+        lastLog = findViewById(R.id.last_log_in);
     }
+
+
+    ActivityResultLauncher<Intent> result = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+        @SuppressLint("SetTextI18n")
+        @Override
+        public void onActivityResult(ActivityResult result) {
+
+            if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null){
+                Toast.makeText(MainActivity.this, "buy, " + result.getData().getStringExtra("NAME"), Toast.LENGTH_SHORT).show();
+                lastLog.setText("last log in was made by " + result.getData().getStringExtra("NAME"));
+            }
+
+        }
+    });
 
 
 }

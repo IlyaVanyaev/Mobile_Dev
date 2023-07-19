@@ -111,4 +111,15 @@
         android:layout_marginStart="330dp"
         />
 
+    <TextView
+        android:id="@+id/last_log_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/main_type_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_welcome" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
