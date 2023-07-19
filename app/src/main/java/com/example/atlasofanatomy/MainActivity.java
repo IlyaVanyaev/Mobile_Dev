@@ -3,6 +3,7 @@ package com.example.atlasofanatomy;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "button push");
+
+                Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
+                intent.putExtra("NAME", et.getText().toString());
+                startActivity(intent);
             }
         });
 
