@@ -1,9 +1,11 @@
 package com.example.atlasofanatomy;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
@@ -21,6 +23,7 @@ public class RegisterFragment extends Fragment {
     private final String TAG = this.getClass().getSimpleName();
 
     TextView lastLog;
+    String name;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,10 @@ public class RegisterFragment extends Fragment {
             public void onClick(View view) {
                 Log.d(TAG, "button push");
 
+                Bundle result = new Bundle();
+                result.putString("NAME", et.getText().toString());
+                getParentFragmentManager().setFragmentResult("REQUEST_TO_SECOND_FRAGMENT", result);
+
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 SecondFragment sf = new SecondFragment();
                 ft.replace(R.id.main_container, sf);
@@ -71,6 +78,16 @@ public class RegisterFragment extends Fragment {
         iv3.setImageResource(R.drawable.pngegg);
 
         lastLog = view.findViewById(R.id.last_log_in);
+
+        getParentFragmentManager().setFragmentResultListener("REQUEST_TO_REGISTER_FRAGMENT", this, new FragmentResultListener() {
+            //@SuppressLint("SetTextI18n")
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                name = result.getString("NAME");
+                lastLog.setText("Last log in was made by " + name);
+            }
+        });
 
         return view;
 

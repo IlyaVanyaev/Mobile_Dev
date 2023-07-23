@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
@@ -23,8 +24,8 @@ public class SecondFragment extends Fragment {
     private final String TAG = this.getClass().getSimpleName();
 
     TextView tv;
-    Intent intent;
     Button b;
+    String name;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,12 +46,25 @@ public class SecondFragment extends Fragment {
 
         tv = view.findViewById(R.id.second_text);
 
-        tv.setText("Welcome!");
+        getParentFragmentManager().setFragmentResultListener("REQUEST_TO_SECOND_FRAGMENT", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                name = result.getString("NAME");
+                tv.setText("Welcome, " + name + "!");
+            }
+        });
+
+
 
         b = view.findViewById(R.id.log_out_button);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Bundle result = new Bundle();
+                result.putString("NAME", name);
+                getParentFragmentManager().setFragmentResult("REQUEST_TO_REGISTER_FRAGMENT", result);
+
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 RegisterFragment rf = new RegisterFragment();
                 ft.replace(R.id.main_container, rf);
