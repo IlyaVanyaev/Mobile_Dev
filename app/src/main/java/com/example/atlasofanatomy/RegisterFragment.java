@@ -20,8 +20,6 @@ import android.widget.TextView;
 
 public class RegisterFragment extends Fragment {
 
-    private final String TAG = this.getClass().getSimpleName();
-
     TextView lastLog;
     EditText et;
 
