@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 
 import android.view.LayoutInflater;
@@ -66,10 +67,7 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                SecondFragment sf = new SecondFragment();
-                ft.replace(R.id.main_container, sf);
-                ft.commit();
+                Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_secondFragment);
 
             }
         });
@@ -78,10 +76,7 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                MuscleList ml = new MuscleList();
-                ft.replace(R.id.main_container, ml);
-                ft.commit();
+                Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_muscleList);
 
             }
         });
