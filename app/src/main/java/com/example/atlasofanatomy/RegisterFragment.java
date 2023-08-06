@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class RegisterFragment extends Fragment {
@@ -67,7 +68,11 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_secondFragment);
+                if (!et.getText().toString().equals("")){
+                    Bundle bundle = new Bundle();
+                    bundle.putString("name", et.getText().toString());
+                    Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_secondFragment, bundle);
+                } else Toast.makeText(getContext(), "Введите ваше имя, пожалуйста", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -76,7 +81,11 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_muscleList);
+                if (!et.getText().toString().equals("")){
+                    Bundle bundle = new Bundle();
+                    bundle.putString("name", et.getText().toString());
+                    Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_muscleList, bundle);
+                } else Toast.makeText(getContext(), "Введите ваше имя, пожалуйста", Toast.LENGTH_SHORT).show();
 
             }
         });

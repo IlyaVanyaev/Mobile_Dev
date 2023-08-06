@@ -53,6 +53,8 @@ public class SecondFragment extends Fragment {
         setBoneData();
         setListView();
 
+        if (getArguments() != null) Toast.makeText(getContext(), "Здравствуйте, "+getArguments().getString("name"), Toast.LENGTH_SHORT).show();
+
         return view;
     }
 
@@ -65,7 +67,7 @@ public class SecondFragment extends Fragment {
 
     private void setListView(){
         listView = view.findViewById(R.id.list_view);
-        BoneAdapter boneAdapter = new BoneAdapter(getActivity().getApplicationContext(), R.layout.bone_view, boneArrayList);
+        BoneAdapter boneAdapter = new BoneAdapter(getContext(), R.layout.bone_view, boneArrayList);
         listView.setAdapter(boneAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
