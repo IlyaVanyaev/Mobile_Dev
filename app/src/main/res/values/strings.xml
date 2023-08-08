@@ -8,6 +8,6 @@
     <string name="bones">Bones</string>
     <string name="muscles">Muscles</string>
     <string name="out">Log out</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="notification">Notification</string>
 </resources>

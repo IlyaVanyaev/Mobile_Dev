@@ -53,49 +53,40 @@
         android:id="@+id/main_string"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/main_type_name"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/anatomy"
         android:layout_marginTop="170dp"
-        />
+        android:text="@string/anatomy"
+        app:layout_constraintBottom_toBottomOf="@id/main_type_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.346" />
 
     <ImageView
         android:id="@+id/main_image"
-        android:src="@drawable/scale_1200"
         android:layout_width="@dimen/image_width"
         android:layout_height="@dimen/image_height"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/main_string"
+        android:layout_marginBottom="70dp"
+        android:src="@drawable/scale_1200"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/second_main_image"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="70dp"
-        />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.034" />
 
-    <TextView
-        android:id="@+id/main_welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/welcome"
-        app:layout_constraintTop_toTopOf="@id/main_string"
-        app:layout_constraintBottom_toTopOf="@id/main_type_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="5dp"
-        />
+
 
     <ImageView
         android:id="@+id/second_main_image"
         android:layout_width="@dimen/image_width"
         android:layout_height="@dimen/image_height"
+        android:layout_marginBottom="70dp"
         android:src="@drawable/mus_anat"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/main_image"
-        app:layout_constraintBottom_toTopOf="@id/main_string"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginBottom="70dp"
-        />
+        app:layout_constraintVertical_bias="0.034" />
 
     <ImageView
         android:id="@+id/main_png"
@@ -121,15 +112,17 @@
         android:layout_marginStart="330dp"
         />
 
-    <TextView
-        android:id="@+id/last_log_in"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="italic"
+    <Button
+        android:id="@+id/main_notification"
+        android:layout_width="162dp"
+        android:layout_height="46dp"
+        android:text="@string/notification"
         app:layout_constraintBottom_toTopOf="@+id/main_type_name"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_welcome" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.875" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

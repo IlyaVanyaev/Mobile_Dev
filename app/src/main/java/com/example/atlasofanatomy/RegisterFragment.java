@@ -1,9 +1,23 @@
 package com.example.atlasofanatomy;
 
 
+import static androidx.core.content.ContextCompat.getSystemService;
+import android.Manifest;
+
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import androidx.fragment.app.FragmentTransaction;
@@ -22,13 +36,21 @@ import android.widget.Toast;
 
 public class RegisterFragment extends Fragment {
 
-    TextView lastLog;
+    private final String CHANNEL_ID = "register_channel";
+    private final int NOTIFICATION_ID = 1;
+
+    private final ActivityResultLauncher<String> resultLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+     if (isGranted) Toast.makeText(getContext(), "Permission granted", Toast.LENGTH_SHORT).show();
+    });
+
     EditText et;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        createNotificationChannel();
 
     }
 
@@ -41,8 +63,6 @@ public class RegisterFragment extends Fragment {
         TextView tv1 = view.findViewById(R.id.main_string);
         tv1.setText(R.string.anatomy);
 
-        TextView tv2 = view.findViewById(R.id.main_welcome);
-        tv2.setText(R.string.welcome);
 
         et = view.findViewById(R.id.main_type_name);
         et.setHint(R.string.type_name);
@@ -53,6 +73,8 @@ public class RegisterFragment extends Fragment {
         Button muscles = view.findViewById(R.id.main_muscles);
         muscles.setText(R.string.muscles);
 
+        Button notification = view.findViewById(R.id.main_notification);
+
         ImageView iv1 = view.findViewById(R.id.main_image);
         iv1.setImageResource(R.drawable.scale_1200);
 
@@ -62,7 +84,6 @@ public class RegisterFragment extends Fragment {
         ImageView iv3 = view.findViewById(R.id.main_png);
         iv3.setImageResource(R.drawable.pngegg);
 
-        lastLog = view.findViewById(R.id.last_log_in);
 
         bones.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +111,36 @@ public class RegisterFragment extends Fragment {
             }
         });
 
+        notification.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
+            @Override
+            public void onClick(View v) {
+                if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED){
+                    showNotification();
+                } else resultLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+            }
+        });
+
         return view;
+
+    }
+
+    private void showNotification(){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), CHANNEL_ID)
+                .setSmallIcon(R.drawable.muscle)
+                .setContentTitle(getString(R.string.anatomy))
+                .setContentText("Welcome to the Anatomy")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        NotificationManagerCompat manager = NotificationManagerCompat.from(getContext());
+        manager.notify(NOTIFICATION_ID, builder.build());
+
+    }
+
+    private void createNotificationChannel(){
+
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "RegisterChannel", NotificationManager.IMPORTANCE_DEFAULT);
+        NotificationManager notificationManager = (NotificationManager) getActivity().getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.createNotificationChannel(channel);
 
     }
 
