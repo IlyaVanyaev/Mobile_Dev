@@ -10,4 +10,6 @@
     <string name="out">Log out</string>
 
     <string name="notification">Notification</string>
+    <string name="press">Нажмите</string>
+    <string name="for_return">для возвращения</string>
 </resources>

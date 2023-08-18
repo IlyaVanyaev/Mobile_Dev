@@ -2,10 +2,10 @@ package com.example.atlasofanatomy;
 
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 
-
+import android.content.Intent;
 import android.os.Bundle;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -18,5 +18,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPause() {
+        startService(new Intent(this, BannerService.class));
+        super.onPause();
+    }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        stopService(new Intent(this, BannerService.class));
+    }
 }

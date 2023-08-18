@@ -7,6 +7,7 @@ import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -118,6 +119,8 @@ public class RegisterFragment extends Fragment {
                 if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED){
                     showNotification();
                 } else resultLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+
+
             }
         });
 
