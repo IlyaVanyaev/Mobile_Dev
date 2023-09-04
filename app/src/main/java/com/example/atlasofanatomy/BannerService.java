@@ -14,14 +14,22 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class BannerService extends Service {
+
+    WindowManager manager;
+    View rootView;
+
     public BannerService() {
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
+    }
 
-        WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+
+        manager = (WindowManager) getSystemService(WINDOW_SERVICE);
         WindowManager.LayoutParams params = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -31,7 +39,7 @@ public class BannerService extends Service {
 
         params.gravity = Gravity.TOP | Gravity.START;
 
-        View rootView = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.banner, null);
+        rootView = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.banner, null);
         ImageView muscle = rootView.findViewById(R.id.muscle_button);
         muscle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,11 +47,12 @@ public class BannerService extends Service {
                 Intent intent = new Intent(BannerService.this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-                manager.removeView(rootView);
             }
         });
 
         manager.addView(rootView, params);
+
+        return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
@@ -54,5 +63,6 @@ public class BannerService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        manager.removeView(rootView);
     }
 }
